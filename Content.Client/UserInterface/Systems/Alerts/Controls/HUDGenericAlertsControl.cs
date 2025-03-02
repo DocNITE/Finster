@@ -1,6 +1,8 @@
 using System.Linq;
+using Content.Client._ViewportGui.ViewportUserInterface;
 using Content.Client._ViewportGui.ViewportUserInterface.UI;
 using Content.Shared.Alert;
+using Robust.Client.Graphics;
 using Robust.Shared.Timing;
 
 namespace Content.Client.UserInterface.Systems.Alerts.Controls;
@@ -8,8 +10,10 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls;
 /// <summary>
 /// Works similar like Alerts control, but should switch icons every each seconds
 /// </summary>
-public class HUDGenericAlertsControl : HUDButton
+public class HUDGenericAlertsControl : HUDTextureRect
 {
+    [Dependency] private readonly IViewportUserInterfaceManager _vpUIManager = default!;
+
     private float _elapsedTime = 0f;
     private const float Interval = 1f; // 1 seconds
 
@@ -19,6 +23,10 @@ public class HUDGenericAlertsControl : HUDButton
 
     public HUDGenericAlertsControl()
     {
+        IoCManager.InjectDependencies(this);
+
+        Texture = _vpUIManager.GetThemeTexture("screen_background");
+        Size = Texture.Size;
     }
 
     protected override void ChildAdded(HUDControl newChild)

@@ -36,7 +36,7 @@ public sealed class TargetingUIController : UIController, IOnStateEntered<Gamepl
         system.TargetingShutdown -= RemoveTargetingControl;
         system.TargetChange -= CycleTarget;
 
-        TargetingControl?.Orphan();
+        TargetingControl?.Dispose();
         TargetingControl = null;
     }
 
@@ -71,7 +71,11 @@ public sealed class TargetingUIController : UIController, IOnStateEntered<Gamepl
     public void RemoveTargetingControl()
     {
         if (TargetingControl != null)
+        {
             TargetingControl.SetTargetDollVisible(false);
+            TargetingControl?.Dispose();
+            TargetingControl = null;
+        }
 
         _targetingComponent = null;
     }

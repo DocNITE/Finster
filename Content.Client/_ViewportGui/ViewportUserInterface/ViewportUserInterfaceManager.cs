@@ -51,6 +51,7 @@ public interface IViewportUserInterfaceManager
     ViewportDrawBounds? GetDrawingBounds();
     ResPath GetThemeRsiPath(string rsi);
     SpriteSpecifier GetThemeRsi(string rsi, string icon);
+    Texture GetThemeTexture(string path);
     Texture? GetTexturePath(string path);
     Texture? GetTexturePath(ResPath path);
     bool TryGetControl<T>(string controlName, out T? control) where T : HUDControl;
@@ -195,6 +196,11 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     {
         SpriteSpecifier sprite = new SpriteSpecifier.Rsi(GetThemeRsiPath(rsi), icon);
         return sprite;
+    }
+
+    public Texture GetThemeTexture(string path)
+    {
+        return _uiManager.CurrentTheme.ResolveTexture(path);
     }
 
     public Texture? GetTexturePath(string path)

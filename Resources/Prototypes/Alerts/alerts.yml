@@ -141,7 +141,8 @@
   name: alerts-good-pressure-name
   description: alerts-good-pressure-desc
   hudPositionX: 0
-  hudPositionY: 224
+  #hudPositionY: 224
+  hudPositionY: 208
   isGeneric: false
 
 - type: alert
@@ -155,7 +156,8 @@
   name: alerts-low-pressure-name
   description: alerts-low-pressure-desc
   hudPositionX: 0
-  hudPositionY: 224
+  #hudPositionY: 224
+  hudPositionY: 208
   isGeneric: false
 
 - type: alert
@@ -169,7 +171,8 @@
   name: alerts-high-pressure-name
   description: alerts-high-pressure-desc
   hudPositionX: 0
-  hudPositionY: 224
+  #hudPositionY: 224
+  hudPositionY: 208
   isGeneric: false
 
 # FINSTER EDIT
@@ -608,7 +611,8 @@
   description: alerts-pulling-desc
   minSeverity: 0
   maxSeverity: 4
-  hudPositionX: 0
+  #hudPositionX: -192
+  hudPositionX: -160
   hudPositionY: 448
   isGeneric: false
 
@@ -623,7 +627,7 @@
   name: alerts-resist-name
   description: alerts-resist-desc
   hudPositionX: 0
-  hudPositionY: 432
+  hudPositionY: 448
   isGeneric: false
 # FINSTER EDIT END
 
@@ -815,7 +819,7 @@
   name: alerts-mood-insane-name
   description: alerts-mood-insane-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -828,7 +832,7 @@
   name: alerts-mood-horrible-name
   description: alerts-mood-horrible-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -841,7 +845,7 @@
   name: alerts-mood-terrible-name
   description: alerts-mood-terrible-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -854,7 +858,7 @@
   name: alerts-mood-bad-name
   description: alerts-mood-bad-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -867,7 +871,7 @@
   name: alerts-mood-meh-name
   description: alerts-mood-meh-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -880,7 +884,7 @@
   name: alerts-mood-neutral-name
   description: alerts-mood-neutral-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -893,7 +897,7 @@
   name: alerts-mood-good-name
   description: alerts-mood-good-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -906,7 +910,7 @@
   name: alerts-mood-great-name
   description: alerts-mood-great-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -919,7 +923,7 @@
   name: alerts-mood-exceptional-name
   description: alerts-mood-exceptional-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -932,7 +936,7 @@
   name: alerts-mood-perfect-name
   description: alerts-mood-perfect-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
@@ -945,7 +949,7 @@
   name: alerts-mood-dead-name
   description: alerts-mood-dead-desc
   hudPositionX: 0
-  hudPositionY: 256
+  hudPositionY: 96
   isGeneric: false
 
 - type: alert
