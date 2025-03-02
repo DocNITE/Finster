@@ -5,12 +5,6 @@
     - /Audio/_Finster/Effects/Combat/punch2.ogg
     - /Audio/_Finster/Effects/Combat/punch3.ogg
     - /Audio/_Finster/Effects/Combat/punch4.ogg
-    - /Audio/_Finster/Effects/Combat/punch5.ogg
-    - /Audio/_Finster/Effects/Combat/punch6.ogg
-    - /Audio/_Finster/Effects/Combat/punch7.ogg
-    - /Audio/_Finster/Effects/Combat/punch8.ogg
-    - /Audio/_Finster/Effects/Combat/punch9.ogg
-    - /Audio/_Finster/Effects/Combat/punch10.ogg
 
 - type: soundCollection
   id: FirePunch
