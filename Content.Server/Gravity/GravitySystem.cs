@@ -42,12 +42,13 @@ namespace Content.Server.Gravity
                 tileDef = (ContentTileDefinition) _tileDefinitionManager[tile.Tile.TypeId];
             }
 
-            if ((tileDef is null || tileDef.ID == "Space") && physicsComponent.BodyStatus != BodyStatus.InAir)
+            if ((tileDef is null || tileDef.ID == ContentTileDefinition.SpaceID) && physicsComponent.BodyStatus != BodyStatus.InAir)
                 args.Affected = true;
         }
 
         private void OnGravitySource(ref IsGravitySource args)
         {
+            // TODO: For space maps there should be added some checks for grid gravity
             if (TryComp<GravityComponent>(args.Target, out var comp))
                 args.Handled = comp.Enabled;
         }

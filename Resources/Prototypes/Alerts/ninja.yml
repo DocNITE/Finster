@@ -1,22 +1,15 @@
 - type: alert
   id: SuitPower
-  icons:
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power0
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power1
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power2
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power3
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power4
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power5
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power6
-  - sprite: /Textures/Interface/Alerts/ninja_power.rsi
-    state: power7
+  sprite: Alerts/ninja_power.rsi
+  states:
+  - power0
+  - power1
+  - power2
+  - power3
+  - power4
+  - power5
+  - power6
+  - power7
   name: alerts-suit-power-name
   description: alerts-suit-power-desc
   minSeverity: 0

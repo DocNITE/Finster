@@ -23,6 +23,8 @@ public class HUDSlotControl : HUDButton, IEntityControl
     private Texture? _buttonTexture;
 
     public static int DefaultButtonSize = 32;
+    public const string SlotButtonPrefix = "SlotButton_";
+    public const string HoverNamePrefix = "slotbutton-";
 
     public HUDTextureRect BlockedRect { get; }
     public HUDTextureRect HighlightRect { get; }
@@ -45,10 +47,12 @@ public class HUDSlotControl : HUDButton, IEntityControl
                 return;
             }
             _slotNameSet = true;
-            Name = "SlotButton_" + value;
+            Name = SlotButtonPrefix + value;
             _slotName = value;
         }
     }
+
+    public string HoverName { get; set; } = string.Empty;
 
     public string HUDSlotGroup { get; set; } = "Default";
 

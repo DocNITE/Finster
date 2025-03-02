@@ -64,6 +64,10 @@ namespace Content.Client.Hands.Systems
             if (args.Current is not HandsComponentState state)
                 return;
 
+            // FINSTER EDIT - Need synchronize throm mode for client
+            component.InThrowMode = state.InThrowMode;
+            // FINSTER EDIT END
+
             var handsModified = component.Hands.Count != state.Hands.Count;
             // we need to check that, even if we have the same amount, that the individual hands didn't change.
             if (!handsModified)

@@ -1,0 +1,7 @@
+﻿- type: soundCollection
+  id: Throwing
+  files:
+  - /Audio/_Finster/Effects/Throwing/swoosh1.ogg
+  - /Audio/_Finster/Effects/Throwing/swoosh2.ogg
+  - /Audio/_Finster/Effects/Throwing/swoosh3.ogg
+  - /Audio/_Finster/Effects/Throwing/swoosh4.ogg

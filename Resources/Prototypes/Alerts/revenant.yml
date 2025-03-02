@@ -1,16 +1,18 @@
 ﻿- type: alert
   id: Essence
   category: Health #it's like ghostie health
-  icons:
-  - sprite: /Textures/Interface/Alerts/essence_counter.rsi
-    state: essence0
+  sprite: Alerts/essence_counter.rsi
+  states:
+  - essence0
   alertViewEntity: AlertEssenceSpriteView
   name: alerts-revenant-essence-name
   description: alerts-revenant-essence-desc
 
 - type: alert
   id: Corporeal
-  icons: [ /Textures/DeltaV/Mobs/Ghosts/revenant.rsi/icon.png ] # DeltaV - Custom revenant sprite
+  sprite: Alerts/essence_counter.rsi
+  states:
+  - essence0
   name: alerts-revenant-corporeal-name
   description: alerts-revenant-corporeal-desc
 

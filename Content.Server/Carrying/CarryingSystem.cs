@@ -32,6 +32,7 @@ using Content.Shared.Storage;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Server.GameObjects;
+using Content.Shared._White.Intent;
 
 namespace Content.Server.Carrying
 {
@@ -50,6 +51,7 @@ namespace Content.Server.Carrying
         [Dependency] private readonly PseudoItemSystem _pseudoItem = default!;
         [Dependency] private readonly ContestsSystem _contests = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
+        [Dependency] private readonly SharedIntentSystem _intent = default!;
 
         public override void Initialize()
         {
@@ -330,7 +332,8 @@ namespace Content.Server.Carrying
                 || HasComp<BeingCarriedComponent>(carrier)
                 || HasComp<BeingCarriedComponent>(carried)
                 || !TryComp<HandsComponent>(carrier, out var hands)
-                || hands.CountFreeHands() < carriedComp.FreeHandsRequired)
+                || hands.CountFreeHands() < carriedComp.FreeHandsRequired
+                || _intent.GetIntent(carrier) != Intent.Grab) // FINSTER EDIT
                 return false;
             return true;
         }

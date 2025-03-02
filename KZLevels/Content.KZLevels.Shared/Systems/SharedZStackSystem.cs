@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Content.KayMisaZlevels.Shared.Components;
 using Robust.Shared.GameObjects;
@@ -32,6 +33,19 @@ public abstract class SharedZStackSystem : EntitySystem
 
         if (!tracker.Maps.Remove(ent))
             Log.Error($"BUG: {ent} (a stack member) is being removed, and claims to have a tracker, but the tracker {tracker} did not claim to own it!");
+    }
+
+    public List<EntityUid> GetAllZStackTrackers()
+    {
+        List<EntityUid> list = new();
+        var query = EntityQueryEnumerator<ZStackTrackerComponent>();
+
+        while (query.MoveNext(out var uid, out var trackerComp))
+        {
+            list.Add(uid);
+        }
+
+        return list;
     }
 
     public bool TryGetZStack(EntityUid ent, [NotNullWhen(true)] out Entity<ZStackTrackerComponent>? stack)

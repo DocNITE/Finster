@@ -30,37 +30,67 @@ public sealed partial class ZDefinedStackSystem : EntitySystem
 
     private void OnMapInit(Entity<ZDefinedStackComponent> initialMapUid, ref MapInitEvent args)
     {
+        // If there is nothing tracker comp (like - round start, instead of mapping)
+        LoadMap(initialMapUid, initialMapUid.Comp, initializeMaps: true);
+    }
+
+    public bool LoadMap(EntityUid initialMapUid, ZDefinedStackComponent? defStackComp = null, bool initializeMaps = false)
+    {
+        if (!Resolve(initialMapUid, ref defStackComp))
+            return false;
+
         // We should use our initial map as stack for Z levels
+        // Also, check if tracker comp already exist.
+        // It need for mapping tools, instead of round gaming.
         var stackLoc = (EntityUid?) initialMapUid;
-        if (!TryComp<ZStackTrackerComponent>(initialMapUid, out var zStackTrackerComp))
+        if (TryComp<ZStackTrackerComponent>(initialMapUid, out var _))
+            return false;
+        else
             AddComp<ZStackTrackerComponent>(initialMapUid);
 
         // Load levels downer
-        foreach (var path in initialMapUid.Comp.DownLevels)
+        foreach (var path in defStackComp.DownLevels)
         {
-            LoadLevel(stackLoc, path);
+            LoadLevel(stackLoc, path, initializeMaps: initializeMaps);
         }
 
         // Add initial map as lowest level in the world
         _zStack.AddToStack(initialMapUid, ref stackLoc);
 
         // Load level upper
-        foreach (var path in initialMapUid.Comp.UpLevels)
+        foreach (var path in defStackComp.UpLevels)
         {
-            LoadLevel(stackLoc, path);
+            LoadLevel(stackLoc, path, initializeMaps: initializeMaps);
         }
+
+        return true;
     }
 
-    private void LoadLevel(EntityUid? stackLoc, ResPath path)
+    /// <summary>
+    /// Load children map of the map.
+    /// </summary>
+    /// <param name="stackLoc">What the fuck is this?</param>
+    /// <param name="path">YAML Map path</param>
+    /// <param name="initializeMaps">Should we initialize maps whe it was loaded.</param>
+    public void LoadLevel(EntityUid? stackLoc, ResPath path, bool initializeMaps = false)
     {
         var options = new DeserializationOptions()
         {
-            InitializeMaps = true
+            InitializeMaps = initializeMaps
         };
 
         if (_mapLoader.TryLoadMap(path, out var map, out _, options: options))
         {
+            // Add to stack
             _zStack.AddToStack(map.Value, ref stackLoc);
+
+            // Mark as a member of defined maps. It needs for multi saving
+            AddComp(map.Value,
+                new ZDefinedStackMemberComponent()
+                {
+                    SavePath = path
+                });
+
             Log.Info($"Created map {map.Value} for ZDefinedStackSystem system");
         }
         else

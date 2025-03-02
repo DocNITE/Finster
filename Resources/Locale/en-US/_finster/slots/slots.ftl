@@ -1,0 +1,22 @@
+slotbutton-eyes = Eyes
+slotbutton-neck = Neck
+slotbutton-jumpsuit = Jumpsuit
+slotbutton-pants = Pants
+slotbutton-pocket1 = Pocket
+slotbutton-pocket2 = Pocket
+slotbutton-pocket3 = Pocket
+slotbutton-pocket4 = Pocket
+slotbutton-id = ID
+slotbutton-head = Head
+slotbutton-mask = Mask
+slotbutton-outerClothing = Suit
+slotbutton-shoes = Shoes
+slotbutton-belt = Belt
+slotbutton-suitstorage = Suit Storage
+slotbutton-ears = Ears
+slotbutton-gloves = Gloves
+slotbutton-back = Back
+
+slotbutton-hand-left = Left Hand
+slotbutton-hand = Hand
+slotbutton-hand-right = Right Hand

@@ -11,7 +11,7 @@ namespace Content.Shared.Wieldable.Components;
 public sealed partial class WieldableComponent : Component
 {
     [DataField("wieldSound")]
-    public SoundSpecifier? WieldSound = new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg");
+    public SoundSpecifier? WieldSound = new SoundPathSpecifier("/Audio/_Finster/Effects/Combat/grab.ogg");
 
     [DataField("unwieldSound")]
     public SoundSpecifier? UnwieldSound;
@@ -28,7 +28,7 @@ public sealed partial class WieldableComponent : Component
 
     /// <summary>
     ///     Whether using the item inhand while wielding causes the item to unwield.
-    ///     Unwielding can conflict with other inhand actions. 
+    ///     Unwielding can conflict with other inhand actions.
     /// </summary>
     [DataField]
     public bool UnwieldOnUse = true;

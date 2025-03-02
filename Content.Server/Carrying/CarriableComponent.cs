@@ -19,6 +19,6 @@ namespace Content.Server.Carrying
         ///     before Contests are considered.
         /// </summary>
         [DataField]
-        public float PickupDuration = 3;
+        public float PickupDuration = 10;
     }
 }

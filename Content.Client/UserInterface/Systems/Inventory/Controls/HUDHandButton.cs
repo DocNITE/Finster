@@ -17,6 +17,20 @@ public sealed class HUDHandButton : HUDSlotControl
         HandName = handName;
         SlotName = handName;
         SetBackground(handLocation);
+
+
+        switch (handLocation)
+        {
+            case HandLocation.Left:
+                HoverName = HoverNamePrefix + "hand-left";
+                break;
+            case HandLocation.Middle:
+                HoverName = HoverNamePrefix + "hand";
+                break;
+            case HandLocation.Right:
+                HoverName = HoverNamePrefix + "hand-right";
+                break;
+        }
     }
 
     private void SetBackground(HandLocation handLoc)

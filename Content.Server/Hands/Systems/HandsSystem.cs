@@ -103,6 +103,7 @@ namespace Content.Server.Hands.Systems
                 return;
 
             comp.InThrowMode = state;
+            Dirty(uid, comp);
             RefreshAlert(uid, comp);
         }
 

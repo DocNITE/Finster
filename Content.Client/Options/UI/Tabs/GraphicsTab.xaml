@@ -15,11 +15,13 @@
                 <Control MinSize="4 0" />
                 <OptionButton Name="UIScaleOption" />
             </BoxContainer>
+            <!--
             <BoxContainer Orientation="Horizontal">
                 <Label Text="{Loc 'ui-options-filter-label'}" />
                 <Control MinSize="4 0" />
                 <OptionButton Name="ViewportFilterOption" />
             </BoxContainer>
+            -->
             <BoxContainer Orientation="Horizontal">
                 <CheckBox Name="ViewportStretchCheckBox" Text="{Loc 'ui-options-vp-stretch'}" />
                 <BoxContainer Name="ViewportScaleBox" Orientation="Horizontal">

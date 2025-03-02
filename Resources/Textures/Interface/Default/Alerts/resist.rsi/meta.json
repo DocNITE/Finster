@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "",
+  "size": { "x": 32, "y": 16 },
+  "states": [
+    {
+      "name": "resist0",
+      "delays": [[3, 0.15, 0.15, 0.15]]
+    }
+  ]
+}

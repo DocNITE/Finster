@@ -37,7 +37,7 @@
     slot: head
   - type: ContainerContainer
     containers:
-      toggleable-clothing: !type:ContainerSlot {}
+      toggleable-clothing: !type:Container {}
   - type: Construction
     graph: LeatherMantleGraph
     node: mantle

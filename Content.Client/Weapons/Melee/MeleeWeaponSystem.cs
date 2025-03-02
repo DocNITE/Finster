@@ -34,6 +34,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
     [Dependency] private readonly SharedIntentSystem _intent = default!; // WD EDIT
 
     private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<HandsComponent> _handsQuery;
 
     private const string MeleeLungeKey = "melee-lunge";
 
@@ -41,6 +42,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
     {
         base.Initialize();
         _xformQuery = GetEntityQuery<TransformComponent>();
+        _handsQuery = GetEntityQuery<HandsComponent>();
         SubscribeNetworkEvent<MeleeLungeEvent>(OnMeleeLunge);
         UpdatesOutsidePrediction = true;
     }
@@ -122,6 +124,11 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             coordinates = EntityCoordinates.FromMap(MapManager.GetMapEntityId(mousePos.MapId), mousePos, TransformSystem, EntityManager);
         }
 
+        // FINSTER EDIT - Don't attack in throw mode
+        if (_handsQuery.TryComp(entity, out var handComp) && handComp.InThrowMode)
+            return;
+        // FINSTER EDIT END
+
         // Heavy attack.
         if (!weapon.DisableHeavy &&
             (!weapon.SwapKeys ? altDown : useDown) &&
@@ -154,7 +161,8 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             }
 
             // Don't light-attack if interaction will be handling this instead
-            if (Interaction.CombatModeCanHandInteract(entity, target))
+            if (Interaction.CombatModeCanHandInteract(entity, target) &&
+                _intent.GetIntent(entity) != Intent.Harm)
                 return;
 
             // WD EDIT START

@@ -13,7 +13,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobBrahmin
-      
+
 - type: entity
   name: Chicken Spawner
   id: N14SpawnMobChicken
@@ -28,7 +28,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobChicken
-      
+
 - type: entity
   name: Bighorner Spawner
   id: N14SpawnMobBighorner
@@ -43,7 +43,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobBighorner
-      
+
 - type: entity
   name: Radstag Spawner
   id: N14SpawnMobRadstag
@@ -133,7 +133,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobRabbit
-      
+
 #MARK: Hostile Animals
 - type: entity
   name: Molerat Spawner
@@ -179,7 +179,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobRadhog
-      
+
 - type: entity
   name: Feral Dog Spawner
   id: N14SpawnMobFeralDog
@@ -194,7 +194,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobDogFeral
-      
+
 - type: entity
   name: Gecko Spawner
   id: N14SpawnMobGecko
@@ -254,7 +254,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobNightstalkerCub
-      
+
 - type: entity
   name: Nightstalker Spawner
   id: N14SpawnMobNightstalker
@@ -269,7 +269,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobNightstalker
-      
+
 - type: entity
   name: Yao Guai Spawner
   id: N14SpawnMobYaoguai
@@ -300,7 +300,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobDeathclaw
-      
+
 - type: entity
   name: Deathclaw Albino Spawner
   id: N14SpawnMobDeathclawAlbino
@@ -315,7 +315,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobDeathclawAlbino
-      
+
 - type: entity
   name: Deathclaw Metal Spawner
   id: N14SpawnMobDeathclawMetal
@@ -330,7 +330,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobDeathclawMetal
-      
+
 #MARK: Insects
 - type: entity
   name: Bloatfly Spawner
@@ -346,7 +346,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobBloatfly
-      
+
 - type: entity
   name: Giant Ant Spawner
   id: N14SpawnMobGiantAnt
@@ -361,7 +361,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobGiantAnt
-      
+
 - type: entity
   name: Giant Fire Ant Spawner
   id: N14SpawnMobGiantFireAnt
@@ -376,7 +376,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobGiantFireAnt
-      
+
 - type: entity
   name: Radroach Spawner
   id: N14SpawnMobRadroach
@@ -391,7 +391,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobRadroach
-      
+
 - type: entity
   name: Radscorpion Spawner
   id: N14SpawnMobRadscorpion
@@ -406,7 +406,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobRadscorpion
-      
+
 - type: entity
   name: Barkscorpion Spawner
   id: N14SpawnMobRadscorpionBark
@@ -421,7 +421,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobRadscorpionBark
-      
+
 - type: entity
   name: Cazador Spawner
   id: N14SpawnMobCazador
@@ -436,203 +436,6 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobCazador
-
-# Ranged Raider Variants
-- type: entity
-  name: Raider Spawner - Pistol
-  id: N14SpawnMobRaiderPsychoRanged
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRaiderPsychoRanged
-      
-- type: entity
-  name: Raider Spawner - Rifle
-  id: N14SpawnMobRaiderPsychoHunter
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRaiderHunter
-      
-- type: entity
-  name: Raider Spawner - Shotgun
-  id: N14SpawnMobRaiderPsychoSkrimisher
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRaiderSkrimisher
-      
-- type: entity
-  name: Raider Spawner - Boss
-  id: N14SpawnMobRaiderBoss
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raiderboss
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRaiderBoss
-
-- type: entity
-  name: Mercenary Spawner - Private
-  id: N14SpawnMobRaiderFernPrivate
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobFernMercPrivate
-
-- type: entity
-  name: Mercenary Spawner - Sergeant
-  id: N14SpawnMobRaiderFernSergeant
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobFernMercSergeant
-
-- type: entity
-  name: Mercenary Spawner - Lieutenant
-  id: N14SpawnMobRaiderFern
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobFernMercLieutenant
-
-- type: entity
-  name: Enforcer Spawner - Trooper
-  id: N14SpawnMobRaiderEnforcerTrooper
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobEnforcerTrooper
-
-- type: entity
-  name: Enforcer Spawner - Warden
-  id: N14SpawnMobRaiderEnforcerWarden
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobEnforcerWarden
-
-- type: entity
-  name: Enforcer Spawner - Chief
-  id: N14SpawnMobRaiderEnforcerChief
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/Raiders.rsi
-        state: raider_ranged
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobEnforcerChief
-
-# Melee Raider Variants
-- type: entity
-  name: Raider Spawner - Melee
-  id: N14SpawnMobRaiderPsycho
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
-        state: raider_melee
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRaiderPsycho
-
-- type: entity
-  name: Fern Spawner - Melee
-  id: N14SpawnMobRaiderFernMelee
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
-        state: raider_melee
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRaiderFernMelee
-
-- type: entity
-  name: Enforcer Spawner - Melee
-  id: N14SpawnMobRaiderEnforcerMelee
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/RaidersSimpleMob/RaiderPsycho.rsi
-        state: raider_melee
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRaiderEnforcerMelee
 
 #MARK: Ghoul
 - type: entity
@@ -649,7 +452,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobGhoulFeral
-      
+
 - type: entity
   name: Feral Ghoul Reaver Spawner
   id: N14SpawnMobFeralGhoulReaver
@@ -664,7 +467,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobGhoulFeralReaver
-      
+
 - type: entity
   name: Feral Ghoul Rotter Spawner
   id: N14SpawnMobFeralGhoulRotter
@@ -679,7 +482,7 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobGhoulFeralRotter
-      
+
 - type: entity
   name: Maypole Spawner
   id: N14SpawnMobGhoulMaypole
@@ -694,201 +497,3 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobGhoulMaypole
-
-#MARK: Robots
-- type: entity
-  name: Assaultron Spawner
-  id: N14SpawnMobAssaultron
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/assaultron.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotAssaultronHostile
-      
-- type: entity
-  name: Protectron Spawner
-  id: N14SpawnMobProtectron
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/protectron.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotProtectronHostile
-      
-- type: entity
-  name: Protectron Builder Spawner
-  id: N14SpawnMobProtectronBuilder
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/protectron-builder.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotProtectronBuilderHostile
-      
-- type: entity
-  name: Protectron Fire Spawner
-  id: N14SpawnMobProtectronFire
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/protectron-fire.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotProtectronFireHostile
-      
-- type: entity
-  name: Protectron Police Spawner
-  id: N14SpawnMobProtectronPoliceHostile
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/protectron-police.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotProtectronPoliceHostile
-      
-- type: entity
-  name: Mr Handy Spawner
-  id: N14SpawnMobMrHandyClaw
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotMrHandyClaw
-      
-- type: entity
-  name: Mr Handy Gun Spawner
-  id: N14SpawnMobMrHandyGun
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/mrhandygun.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotMrHandyGun
-      
-- type: entity
-  name: Mr Handy Saw Spawner
-  id: N14SpawnMobMrHandySaw
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/mrhandysaw.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotMrHandySaw
-      
-- type: entity
-  name: Mr Gutsy Spawner
-  id: N14SpawnMobMrHandyGutsy
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotMrHandyGutsy
-      
-- type: entity
-  name: Robobrain Spawner
-  id: N14SpawnMobRobobrain
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/robobrain.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotRobobrain
-      
-- type: entity
-  name: Eyebot Spawner
-  id: N14SpawnMobEyebot
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Robots/eyebot.rsi
-        state: icon
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobRobotEyebot
-
-- type: entity
-  name: Spore Plant Spawner
-  id: N14SpawnMobSporePlant
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Plants/sporeplant.rsi
-        state: sporeplant
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobSporeplant
-
-#Pets
-- type: entity
-  name: Haggis the Cat Spawner
-  id: N14SpawnMobHaggis
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: green
-      - sprite: _Nuclear14/Mobs/Pets/cathaggis.rsi
-        state: cathaggis
-      - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-      - N14MobCatHaggis
-

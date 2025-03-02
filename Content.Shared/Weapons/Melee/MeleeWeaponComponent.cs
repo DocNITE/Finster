@@ -184,7 +184,7 @@ public sealed partial class MeleeWeaponComponent : Component
     /// This gets played whenever a melee attack is done. This is predicted by the client.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public SoundSpecifier SoundSwing { get; set; } = new SoundPathSpecifier("/Audio/Weapons/punchmiss.ogg")
+    public SoundSpecifier SoundSwing { get; set; } = new SoundPathSpecifier("/Audio/_Finster/Effects/Combat/punchmiss.ogg")
     {
         Params = AudioParams.Default.WithVolume(-3f).WithVariation(0.025f),
     };

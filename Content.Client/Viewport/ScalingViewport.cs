@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Content.Client.UserInterface.Systems.Viewport;
 using Content.KayMisaZlevels.Client;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -50,6 +51,12 @@ public sealed class ScalingViewport : Control, IViewportControl
     private int _fixedRenderScale = 1;
 
     private readonly List<CopyPixelsDelegate<Rgba32>> _queuedScreenshots = new();
+
+    /// <summary>
+    /// Viewport sized in tiles
+    /// </summary>
+    public Vector2i SizeInTiles { get; set; } = new Vector2i(ViewportUIController.ViewportHeight, ViewportUIController.ViewportHeight);
+    public Vector2i OffsetSize { get; set; } = Vector2i.Zero;
 
     public int CurrentRenderScale => _curRenderScale;
 
@@ -296,7 +303,13 @@ public sealed class ScalingViewport : Control, IViewportControl
     {
         DebugTools.AssertNotNull(_viewport);
 
+        var baseHeight = EyeManager.PixelsPerMeter * SizeInTiles.Y;
+        var baseWidth = EyeManager.PixelsPerMeter * SizeInTiles.Y;
+
         var vpSize = _viewport!.Size;
+        var vpSizeSized = new Vector2i(vpSize.X, vpSize.Y);
+        vpSizeSized.X = (baseWidth + (OffsetSize.X * EyeManager.PixelsPerMeter)) * (vpSize.X / baseWidth); // Only testing
+        vpSizeSized.Y = (baseHeight + (OffsetSize.Y * EyeManager.PixelsPerMeter)) * (vpSize.Y / baseHeight); // Only testing
         var ourSize = (Vector2) PixelSize;
 
         if (FixedStretchSize == null)
@@ -317,16 +330,22 @@ public sealed class ScalingViewport : Control, IViewportControl
             }
 
             var size = vpSize * ratio;
+            var sizeSized = vpSizeSized * ratio;
             // Size
-            var pos = (ourSize - size) / 2;
+            var pos = (ourSize - sizeSized) / 2;
 
             return (UIBox2i) UIBox2.FromDimensions(pos, size);
         }
         else
         {
+            var fixedStretchSize = FixedStretchSize.Value;
+            var fixedStretchSizeSized = new Vector2i(fixedStretchSize.X, fixedStretchSize.Y);
+            fixedStretchSizeSized.X = (baseWidth + (OffsetSize.X * EyeManager.PixelsPerMeter)) * (fixedStretchSize.X / baseWidth);
+            fixedStretchSizeSized.Y = (baseHeight + (OffsetSize.Y * EyeManager.PixelsPerMeter)) * (fixedStretchSize.Y / baseHeight);
+
             // Center only, no scaling.
-            var pos = (ourSize - FixedStretchSize.Value) / 2;
-            return (UIBox2i) UIBox2.FromDimensions(pos, FixedStretchSize.Value);
+            var pos = (ourSize - fixedStretchSizeSized) / 2;
+            return (UIBox2i) UIBox2.FromDimensions(pos, fixedStretchSize);
         }
     }
 

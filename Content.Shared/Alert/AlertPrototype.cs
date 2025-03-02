@@ -19,8 +19,14 @@ public sealed partial class AlertPrototype : IPrototype
     /// List of icons to use for this alert. Each entry corresponds to a different severity level, starting from the
     /// minimum and incrementing upwards. If severities are not supported, the first entry is used.
     /// </summary>
+    //[DataField(required: true)]
+    //public List<SpriteSpecifier> Icons = new();
+
     [DataField(required: true)]
-    public List<SpriteSpecifier> Icons = new();
+    public string Sprite = default!;
+
+    [DataField(required: true)]
+    public List<string> States = new();
 
     /// <summary>
     /// An entity used for displaying the <see cref="Icons"/> in the UI control.
@@ -98,17 +104,17 @@ public sealed partial class AlertPrototype : IPrototype
 
     /// <param name="severity">severity level, if supported by this alert</param>
     /// <returns>the icon path to the texture for the provided severity level</returns>
-    public SpriteSpecifier GetIcon(short? severity = null)
+    public string GetIcon(short? severity = null)
     {
         var minIcons = SupportsSeverity
             ? MaxSeverity - MinSeverity
             : 1;
 
-        if (Icons.Count < minIcons)
+        if (States.Count < minIcons)
             throw new InvalidOperationException($"Insufficient number of icons given for alert {ID}");
 
         if (!SupportsSeverity)
-            return Icons[0];
+            return States[0];
 
         if (severity == null)
         {
@@ -125,6 +131,6 @@ public sealed partial class AlertPrototype : IPrototype
             throw new ArgumentOutOfRangeException(nameof(severity), $"Severity above maximum severity in {AlertKey}.");
         }
 
-        return Icons[severity.Value - _minSeverity];
+        return States[severity.Value - _minSeverity];
     }
 }

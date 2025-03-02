@@ -1,16 +1,16 @@
-- type: reaction
-  id: Gunpowder
-  reactants:
-    Sulfur:
-      amount: 1
-    Carbon:
-      amount: 1
-    Fertilizer:
-      amount: 1
-  effects:
-    - !type:CreateEntityReactionEffect
-      entity: Gunpowder1
-      
+#- type: reaction
+#  id: Gunpowder
+#  reactants:
+#    Sulfur:
+#      amount: 1
+#    Carbon:
+#      amount: 1
+#    Fertilizer:
+#      amount: 1
+#  effects:
+#    - !type:CreateEntityReactionEffect
+#      entity: Gunpowder1
+
 # - type: reaction
   # id: Composting
   # source: true # breakdown of existing resource
@@ -22,7 +22,7 @@
   # effects:
     # - !type:CreateEntityReactionEffect
       # entity: N14CompostRotted
-      
+
 - type: reaction
   id: Composting
   source: true # breakdown of existing resource
@@ -34,7 +34,7 @@
   effects:
     - !type:CreateEntityReactionEffect
       entity: N14CompostRotted
-      
+
 - type: reaction
   id: Cleaner
   reactants:

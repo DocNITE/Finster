@@ -64,7 +64,7 @@
       stripTime: 2
       uiWindowPos: 0,3
       strippingWindowPos: 0,3
-      dependsOn: jumpsuit
+      dependsOn: pants
       displayName: Pocket 1
       stripHidden: true
     - name: pocket2
@@ -74,11 +74,11 @@
       stripTime: 2
       uiWindowPos: 2,3
       strippingWindowPos: 2,3
-      dependsOn: jumpsuit
+      dependsOn: pants
       displayName: Pocket 2
       stripHidden: true
     - name: suitstorage
-      slotTexture: suit_storage
+      slotTexture: gun_storage
       slotFlags:   SUITSTORAGE
       stripTime: 2
       uiWindowPos: 2,0

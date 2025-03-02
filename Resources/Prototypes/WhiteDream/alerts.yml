@@ -1,5 +1,7 @@
 ﻿- type: alert
   id: CultEmpowered
-  icons: [ /Textures/WhiteDream/BloodCult/Alerts/empowered.png ]
+  sprite: Alerts/essence_counter.rsi
+  states:
+  - essence0
   name: alerts-blood-cult-empowered-name
   description: alerts-blood-cult-empowered-desc

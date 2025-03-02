@@ -23,12 +23,14 @@ namespace Content.Client.Options.UI.Tabs
             2f
         };
 
+        /*
         private static readonly string[] ViewportFilterOptions =
         {
             "LoraNoise",
             "LoraCRT",
             "None" // It must be null, be we call it "None"
         };
+        */
 
         [Dependency] private readonly IConfigurationManager _cfg = default!;
 
@@ -57,11 +59,24 @@ namespace Content.Client.Options.UI.Tabs
             UIScaleOption.OnItemSelected += OnUIScaleChanged;
 
             // TODO: Move all items definition into prototypes
+            /*
             foreach (var item in ViewportFilterOptions)
             {
                 ViewportFilterOption.AddItem(item);
             }
             ViewportFilterOption.OnItemSelected += OnViewportFilterChanged;
+
+            var fIdx = 0;
+            foreach (var filter in ViewportFilterOptions)
+            {
+                if (filter == _cfg.GetCVar(CCVars.ViewportFilter))
+                {
+                    ViewportFilterOption.Select(fIdx);
+                    break;
+                }
+                fIdx++;
+            }
+            */
 
             ViewportStretchCheckBox.OnToggled += _ =>
             {
@@ -116,11 +131,13 @@ namespace Content.Client.Options.UI.Tabs
             UpdateApplyButton();
         }
 
+        /*
         private void OnViewportFilterChanged(OptionButton.ItemSelectedEventArgs args)
         {
             ViewportFilterOption.SelectId(args.Id);
             UpdateApplyButton();
         }
+        */
 
         private void OnApplyButtonPressed(BaseButton.ButtonEventArgs args)
         {
@@ -131,7 +148,7 @@ namespace Content.Client.Options.UI.Tabs
                          (int) (FullscreenCheckBox.Pressed ? WindowMode.Fullscreen : WindowMode.Windowed));
             _cfg.SetCVar(CVars.DisplayUIScale, UIScaleOptions[UIScaleOption.SelectedId]);
 
-            _cfg.SetCVar(CCVars.ViewportFilter, ViewportFilterOptions[ViewportFilterOption.SelectedId]);
+            //_cfg.SetCVar(CCVars.ViewportFilter, ViewportFilterOptions[ViewportFilterOption.SelectedId]);
 
             _cfg.SetCVar(CCVars.ViewportStretch, ViewportStretchCheckBox.Pressed);
             _cfg.SetCVar(CCVars.ViewportFixedScaleFactor, (int) ViewportScaleSlider.Value);
@@ -165,7 +182,7 @@ namespace Content.Client.Options.UI.Tabs
             var isFullscreenSame = FullscreenCheckBox.Pressed == ConfigIsFullscreen;
             var isLightingQualitySame = LightingPresetOption.SelectedId == GetConfigLightingQuality();
             var isUIScaleSame = MathHelper.CloseToPercent(UIScaleOptions[UIScaleOption.SelectedId], ConfigUIScale);
-            var isViewportFilterSame = ViewportFilterOptions[ViewportFilterOption.SelectedId] == _cfg.GetCVar(CCVars.ViewportFilter);
+            //var isViewportFilterSame = ViewportFilterOptions[ViewportFilterOption.SelectedId] == _cfg.GetCVar(CCVars.ViewportFilter);
             var isVPStretchSame = ViewportStretchCheckBox.Pressed == _cfg.GetCVar(CCVars.ViewportStretch);
             var isVPScaleSame = (int) ViewportScaleSlider.Value == _cfg.GetCVar(CCVars.ViewportFixedScaleFactor);
             var isIntegerScalingSame = IntegerScalingCheckBox.Pressed == (_cfg.GetCVar(CCVars.ViewportSnapToleranceMargin) != 0);
@@ -179,7 +196,7 @@ namespace Content.Client.Options.UI.Tabs
                                    isFullscreenSame &&
                                    isLightingQualitySame &&
                                    isUIScaleSame &&
-                                   isViewportFilterSame &&
+                                   //isViewportFilterSame &&
                                    isVPScaleSame &&
                                    isIntegerScalingSame &&
                                    isVPStretchSame &&

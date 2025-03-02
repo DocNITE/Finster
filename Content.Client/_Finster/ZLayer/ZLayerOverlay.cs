@@ -21,15 +21,12 @@ public sealed class ZLayerOverlay : Overlay
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IParallaxManager _manager = default!;
 
-    private ShaderInstance _zLayerShader;
-
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowWorld;
 
     public ZLayerOverlay()
     {
         ZIndex = 0;
         IoCManager.InjectDependencies(this);
-        _zLayerShader = _prototypeManager.Index<ShaderPrototype>("ZLayer").InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -50,12 +47,7 @@ public sealed class ZLayerOverlay : Overlay
 
         var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;
         var worldHandle = args.WorldHandle;
-
-        var realTime = (float) _timing.RealTime.TotalSeconds;
-
-        worldHandle.UseShader(_zLayerShader);
-        worldHandle.DrawRect(args.WorldAABB, Color.Black, true);
-        worldHandle.UseShader(null);
+        worldHandle.DrawRect(args.WorldAABB, Color.Black.WithAlpha(0.5f), true);
     }
 }
 

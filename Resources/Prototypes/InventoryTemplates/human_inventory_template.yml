@@ -46,7 +46,7 @@
       uiWindowPos: 0,1
       hudWindowPos: 3,2
       strippingWindowPos: 0,4
-      dependsOn: jumpsuit
+      dependsOn: pants
       displayName: Pocket 1
       stripHidden: true
     - name: id
@@ -104,7 +104,7 @@
       strippingWindowPos: 1,4
       displayName: Belt
     - name: suitstorage
-      slotTexture: suit_storage
+      slotTexture: gun_storage
       slotFlags:   SUITSTORAGE
       #slotGroup: MainHotbar
       stripTime: 3
@@ -142,7 +142,7 @@
       uiWindowPos: 2,1
       hudWindowPos: 5,2
       strippingWindowPos: 2,4
-      dependsOn: jumpsuit
+      dependsOn: pants
       displayName: Pocket 2
       stripHidden: true
     - name: back

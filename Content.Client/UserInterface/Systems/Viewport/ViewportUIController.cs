@@ -28,7 +28,7 @@ public sealed class ViewportUIController : UIController
         _configurationManager.OnValueChanged(CCVars.ViewportMaximumWidth, _ => UpdateViewportRatio());
         _configurationManager.OnValueChanged(CCVars.ViewportWidth, _ => UpdateViewportRatio());
         _configurationManager.OnValueChanged(CCVars.ViewportVerticalFit, _ => UpdateViewportRatio());
-        _configurationManager.OnValueChanged(CCVars.ViewportFilter, _ => UpdateViewportFilter());
+        //_configurationManager.OnValueChanged(CCVars.ViewportFilter, _ => UpdateViewportFilter());
 
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
@@ -64,6 +64,7 @@ public sealed class ViewportUIController : UIController
         Viewport.UpdateCfg();
     }
 
+    /*
     public void UpdateViewportFilter()
     {
         if (Viewport == null)
@@ -81,6 +82,7 @@ public sealed class ViewportUIController : UIController
             Viewport.Viewport.Shader = null;
         }
     }
+    */
 
     public void ReloadViewport()
     {
@@ -89,6 +91,7 @@ public sealed class ViewportUIController : UIController
             return;
         }
 
+        /*
         var shaderName = _configurationManager.GetCVar(CCVars.ViewportFilter);
         if (shaderName != "None")
         {
@@ -100,6 +103,8 @@ public sealed class ViewportUIController : UIController
         }
 
         UpdateViewportFilter();
+        */
+
         UpdateViewportRatio();
         Viewport.Viewport.HorizontalExpand = true;
         Viewport.Viewport.VerticalExpand = true;

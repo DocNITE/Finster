@@ -51,9 +51,9 @@
 - type: alert
   id: AirOk
   category: Breathing
-  icons:
-  - sprite: /Textures/Interface/Alerts/breathing.rsi
-    state: air
+  sprite: Alerts/breathing.rsi
+  states:
+  - air
   name: alerts-airok-name
   description: alerts-airok-desc
   hudPositionX: 0
@@ -63,9 +63,9 @@
 - type: alert
   id: LowOxygen
   category: Breathing
-  icons:
-  - sprite: /Textures/Interface/Alerts/breathing.rsi
-    state: not_enough_oxy
+  sprite: Alerts/breathing.rsi
+  states:
+  - not_enough_oxy
   name: alerts-low-oxygen-name
   description: alerts-low-oxygen-desc
   hudPositionX: 0
@@ -75,9 +75,9 @@
 - type: alert
   id: LowNitrogen
   category: Breathing
-  icons:
-    - sprite: /Textures/Interface/Alerts/breathing.rsi
-      state: not_enough_nitro
+  sprite: Alerts/breathing.rsi
+  states:
+  - not_enough_nitro
   name: alerts-low-nitrogen-name
   description: alerts-low-nitrogen-desc
   hudPositionX: 0
@@ -87,9 +87,9 @@
 - type: alert
   id: LowPlasma
   category: Breathing
-  icons:
-    - sprite: /Textures/Interface/Alerts/breathing.rsi
-      state: not_enough_tox
+  sprite: Alerts/breathing.rsi
+  states:
+  - not_enough_tox
   name: alerts-low-plasma-name
   description: alerts-low-plasma-desc
   hudPositionX: 0
@@ -99,9 +99,9 @@
 - type: alert
   id: HighOxygen
   category: Breathing
-  icons:
-    - sprite: /Textures/Interface/Alerts/breathing.rsi
-      state: too_much_oxy
+  sprite: Alerts/breathing.rsi
+  states:
+  - too_much_oxy
   name: alerts-high-oxygen-name
   description: alerts-high-oxygen-desc
   hudPositionX: 0
@@ -111,9 +111,9 @@
 - type: alert
   id: ToxinsOk
   category: Toxins
-  icons:
-  - sprite: /Textures/Interface/Alerts/breathing.rsi
-    state: tox
+  sprite: Alerts/breathing.rsi
+  states:
+  - tox
   name: alerts-toxok-name
   description: alerts-toxok-desc
   #hudPositionX: 0
@@ -123,9 +123,9 @@
 - type: alert
   id: Toxins
   category: Toxins
-  icons:
-  - sprite: /Textures/Interface/Alerts/breathing.rsi
-    state: too_much_tox
+  sprite: Alerts/breathing.rsi
+  states:
+  - too_much_tox
   name: alerts-high-toxin-name
   description: alerts-high-toxin-desc
   #hudPositionX: 0
@@ -135,9 +135,9 @@
 - type: alert
   id: GoodPressure
   category: Pressure
-  icons:
-  - sprite: /Textures/Interface/Alerts/pressure.rsi
-    state: good
+  sprite: Alerts/pressure.rsi
+  states:
+  - good
   name: alerts-good-pressure-name
   description: alerts-good-pressure-desc
   hudPositionX: 0
@@ -147,11 +147,10 @@
 - type: alert
   id: LowPressure
   category: Pressure
-  icons:
-  - sprite: /Textures/Interface/Alerts/pressure.rsi
-    state: lowpressure1
-  - sprite: /Textures/Interface/Alerts/pressure.rsi
-    state: lowpressure2
+  sprite: Alerts/pressure.rsi
+  states:
+  - lowpressure1
+  - lowpressure2
   maxSeverity: 2
   name: alerts-low-pressure-name
   description: alerts-low-pressure-desc
@@ -162,11 +161,10 @@
 - type: alert
   id: HighPressure
   category: Pressure
-  icons:
-  - sprite: /Textures/Interface/Alerts/pressure.rsi
-    state: highpressure1
-  - sprite: /Textures/Interface/Alerts/pressure.rsi
-    state: highpressure2
+  sprite: Alerts/pressure.rsi
+  states:
+  - highpressure1
+  - highpressure2
   maxSeverity: 2
   name: alerts-high-pressure-name
   description: alerts-high-pressure-desc
@@ -194,13 +192,11 @@
 - type: alert
   id: Cold
   category: Temperature
-  icons:
-  - sprite: /Textures/Interface/Alerts/temperature.rsi
-    state: cold1
-  - sprite: /Textures/Interface/Alerts/temperature.rsi
-    state: cold2
-  - sprite: /Textures/Interface/Alerts/temperature.rsi
-    state: cold3
+  sprite: Alerts/temperature.rsi
+  states:
+  - cold1
+  - cold2
+  - cold3
   maxSeverity: 3
   name: alerts-too-cold-name
   description: alerts-too-cold-desc
@@ -211,9 +207,9 @@
 - type: alert
   id: NormalTemperature
   category: Temperature
-  icons:
-  - sprite: /Textures/Interface/Alerts/temperature.rsi
-    state: normal
+  sprite: Alerts/temperature.rsi
+  states:
+  - normal
   name: alerts-normal-temperature-name
   description: alerts-normal-temperature-desc
   hudPositionX: 0
@@ -223,13 +219,11 @@
 - type: alert
   id: Hot
   category: Temperature
-  icons:
-  - sprite: /Textures/Interface/Alerts/temperature.rsi
-    state: hot1
-  - sprite: /Textures/Interface/Alerts/temperature.rsi
-    state: hot2
-  - sprite: /Textures/Interface/Alerts/temperature.rsi
-    state: hot3
+  sprite: Alerts/temperature.rsi
+  states:
+  - hot1
+  - hot2
+  - hot3
   maxSeverity: 3
   name: alerts-too-hot-name
   description: alerts-too-hot-desc
@@ -247,9 +241,9 @@
 - type: alert
   id: Stun
   category: Stun
-  icons:
-  - sprite: /Textures/Interface/Alerts/stun.rsi
-    state: stun
+  sprite: Alerts/stun.rsi
+  states:
+  - stun
   name: alerts-stunned-name
   description: alerts-stunned-desc
 
@@ -280,9 +274,9 @@
 - type: alert
   id: Offer
   onClick: !type:AcceptOffer  { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/offer_item.rsi
-    state: offer_item
+  sprite: Alerts/offer_item.rsi
+  states:
+  - offer_item
   name: alerts-offer-name
   description: alerts-offer-desc
   hudPositionX: -32
@@ -292,9 +286,9 @@
 - type: alert
   id: HumanCrit
   category: Health
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_critical.rsi
-    state: critical
+  sprite: Alerts/human_critical.rsi
+  states:
+  - critical
   name: alerts-crit-name
   description: alerts-crit-desc
   hudPositionX: 0
@@ -304,9 +298,9 @@
 - type: alert
   id: HumanDead
   category: Health
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_dead.rsi
-    state: dead
+  sprite: Alerts/human_dead.rsi
+  states:
+  - dead
   name: alerts-dead-name
   description: alerts-dead-desc
   hudPositionX: 0
@@ -317,17 +311,13 @@
   id: HumanHealth
   category: Health
   onClick: !type:CheckHealth { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health0
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health1
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health2
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health3
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health4
+  sprite: Alerts/human_alive.rsi
+  states:
+  - health0
+  - health1
+  - health2
+  - health3
+  - health4
   name: alerts-health-name
   description: alerts-health-desc
   minSeverity: 0
@@ -339,17 +329,13 @@
 - type: alert
   id: BorgHealth
   category: Health
-  icons:
-  - sprite: /Textures/Interface/Alerts/borg_alive.rsi
-    state: health0
-  - sprite: /Textures/Interface/Alerts/borg_alive.rsi
-    state: health1
-  - sprite: /Textures/Interface/Alerts/borg_alive.rsi
-    state: health2
-  - sprite: /Textures/Interface/Alerts/borg_alive.rsi
-    state: health3
-  - sprite: /Textures/Interface/Alerts/borg_alive.rsi
-    state: health4
+  sprite: Alerts/borg_alive.rsi
+  states:
+  - health0
+  - health1
+  - health2
+  - health3
+  - health4
   name: alerts-health-name
   description: alerts-health-desc
   minSeverity: 0
@@ -361,9 +347,9 @@
 - type: alert
   id: BorgCrit
   category: Health
-  icons:
-  - sprite: /Textures/Interface/Alerts/borg_critical.rsi
-    state: critical
+  sprite: Alerts/borg_critical.rsi
+  states:
+  - critical
   name: alerts-crit-name
   description: alerts-crit-desc
   hudPositionX: 0
@@ -373,9 +359,9 @@
 - type: alert
   id: BorgDead
   category: Health
-  icons:
-  - sprite: /Textures/Interface/Alerts/borg_dead.rsi
-    state: dead
+  sprite: Alerts/borg_dead.rsi
+  states:
+  - dead
   name: alerts-dead-name
   description: alerts-dead-desc
   hudPositionX: 0
@@ -385,29 +371,19 @@
 - type: alert
   id: BorgBattery
   category: Battery
-  icons:
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery0
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery1
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery2
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery3
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery4
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery5
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery6
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery7
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery8
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery9
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery10
+  sprite: Alerts/battery.rsi
+  states:
+  - battery0
+  - battery1
+  - battery2
+  - battery3
+  - battery4
+  - battery5
+  - battery6
+  - battery7
+  - battery8
+  - battery9
+  - battery10
   name: alerts-battery-name
   description: alerts-battery-desc
   minSeverity: 0
@@ -419,9 +395,9 @@
 - type: alert
   id: BorgBatteryNone
   category: Battery
-  icons:
-  - sprite: /Textures/Interface/Alerts/battery.rsi
-    state: battery-none
+  sprite: Alerts/battery.rsi
+  states:
+  - battery-none
   name: alerts-no-battery-name
   description: alerts-no-battery-desc
   hudPositionX: 0
@@ -432,13 +408,11 @@
   id: Internals
   category: Internals
   onClick: !type:ToggleInternals {}
-  icons:
-  - sprite: /Textures/Interface/Alerts/internals.rsi
-    state: internal0
-  - sprite: /Textures/Interface/Alerts/internals.rsi
-    state: internal1
-  - sprite: /Textures/Interface/Alerts/internals.rsi
-    state: internal2
+  sprite: Alerts/internals.rsi
+  states:
+  - internal0
+  - internal1
+  - internal2
   name: alerts-internals-name
   description: alerts-internals-desc
   minSeverity: 0
@@ -451,7 +425,9 @@
   id: PilotingShuttle
   category: Piloting
   onClick: !type:StopPiloting { }
-  icons: [ /Textures/Interface/Alerts/piloting.png ]
+  sprite: Alerts/piloting.rsi
+  states:
+  - piloting0
   name: alerts-piloting-name
   description: alerts-piloting-desc
   hudPositionX: -32
@@ -461,56 +437,46 @@
 - type: alert
   id: Peckish
   category: Hunger
-  icons:
-  - sprite: /Textures/Interface/Alerts/hunger.rsi
-    state: peckish
+  sprite: Alerts/hunger.rsi
+  states:
+  - peckish
   name: alerts-hunger-name
   description: alerts-hunger-desc
 
 - type: alert
   id: HungerOkay
   category: Hunger
-  icons:
-  - sprite: /Textures/Interface/Alerts/hunger.rsi
-    state: okay
+  sprite: Alerts/hunger.rsi
+  states:
+  - okay
   name: alerts-hunger-okay-name
   description: alerts-hunger-okay-desc
 
 - type: alert
   id: Overfed
   category: Hunger
-  icons:
-  - sprite: /Textures/Interface/Alerts/hunger.rsi
-    state: overfed
+  sprite: Alerts/hunger.rsi
+  states:
+  - overfed
   name: alerts-overfed-name
   description: alerts-overfed-desc
 
 - type: alert
   id: Stamina
   category: Stamina
-  icons:
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina0
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina1
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina2
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina3
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina4
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina5
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina6
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina7
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina8
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina9
-  - sprite: /Textures/Interface/Alerts/stamina.rsi
-    state: stamina10
+  sprite: Alerts/stamina.rsi
+  states:
+  - stamina0
+  - stamina1
+  - stamina2
+  - stamina3
+  - stamina4
+  - stamina5
+  - stamina6
+  - stamina7
+  - stamina8
+  - stamina9
+  - stamina10
   name: alerts-stamina-name
   description: alerts-stamina-desc
   minSeverity: 0
@@ -522,82 +488,88 @@
 - type: alert
   id: HungerDead
   category: Hunger
-  icons:
-  - sprite: /Textures/Interface/Alerts/hunger.rsi
-    state: dead
+  sprite: Alerts/hunger.rsi
+  states:
+  - dead
   name: alerts-hunger-dead-name
   description: alerts-hunger-dead-desc
 
 - type: alert
   id: Starving
   category: Hunger
-  icons:
-  - sprite: /Textures/Interface/Alerts/hunger.rsi
-    state: starving
+  sprite: Alerts/hunger.rsi
+  states:
+  - starving
   name: alerts-starving-name
   description: alerts-starving-desc
 
 - type: alert
   id: OverHydrated
   category: Thirst
-  icons:
-  - sprite: /Textures/Interface/Alerts/thirst.rsi
-    state: overhydrated
+  sprite: Alerts/thirst.rsi
+  states:
+  - overhydrated
   name: alerts-overhydrated-name
   description: alerts-overhydrated-desc
 
 - type: alert
   id: ThirstOkay
   category: Thirst
-  icons:
-  - sprite: /Textures/Interface/Alerts/thirst.rsi
-    state: okay
+  sprite: Alerts/thirst.rsi
+  states:
+  - okay
   name: alerts-thirst-okay-name
   description: alerts-thirst-okay-desc
 
 - type: alert
   id: Thirsty
   category: Thirst
-  icons:
-  - sprite: /Textures/Interface/Alerts/thirst.rsi
-    state: thirsty
+  sprite: Alerts/thirst.rsi
+  states:
+  - thirsty
   name: alerts-thirsty-name
   description: alerts-thirsty-desc
 
 - type: alert
   id: Parched
   category: Thirst
-  icons:
-  - sprite: /Textures/Interface/Alerts/thirst.rsi
-    state: parched
+  sprite: Alerts/thirst.rsi
+  states:
+  - parched
   name: alerts-parched-name
   description: alerts-parched-desc
 
 - type: alert
   id: ThirstDead
   category: Thirst
-  icons:
-  - sprite: /Textures/Interface/Alerts/thirst.rsi
-    state: dead
+  sprite: Alerts/thirst.rsi
+  states:
+  - dead
   name: alerts-thirst-dead-name
   description: alerts-thirst-dead-desc
 
 - type: alert
   id: Muted
-  icons: [ /Textures/Interface/Alerts/Abilities/silenced.png ]
+  sprite: Alerts/abilities.rsi
+  states:
+  - silenced
   name: alerts-muted-name
   description: alerts-muted-desc
 
 - type: alert
   id: VowOfSilence
-  icons: [ /Textures/Interface/Alerts/Abilities/silenced.png ]
+  sprite: Alerts/abilities.rsi
+  states:
+  - silenced
   name: alerts-vow-silence-name
   onClick: !type:BreakVow  { }
   description: alerts-vow-silence-desc
 
 - type: alert
   id: VowBroken
-  icons: [ /Textures/Interface/Actions/scream.png ]
+  sprite: Alerts/abilities.rsi
+  states:
+  - silenced
   name: alerts-vow-broken-name
   onClick: !type:RetakeVow  { }
   description: alerts-vow-broken-desc
@@ -624,17 +596,13 @@
 - type: alert
   id: Pulling
   category: Pulling
-  icons:
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: pulling
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: grab-soft
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: grab-hard
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: grab-choke
-  - sprite: /Textures/Interface/Alerts/pull.rsi
-    state: normal
+  sprite: Alerts/pull.rsi
+  states:
+  - pulling
+  - grab-soft
+  - grab-hard
+  - grab-choke
+  - normal
   onClick: !type:StopPulling  { }
   name: alerts-pulling-name
   description: alerts-pulling-desc
@@ -649,9 +617,9 @@
   id: Resist
   category: Resist
   onClick: !type:TryResist { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/resist.rsi
-    state: resist0
+  sprite: Alerts/resist.rsi
+  states:
+  - resist0
   name: alerts-resist-name
   description: alerts-resist-desc
   hudPositionX: 0
@@ -663,29 +631,19 @@
 - type: alert
   id: Bleed
   category: Bleed
-  icons:
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed0
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed1
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed2
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed3
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed4
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed5
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed6
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed7
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed8
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed9
-  - sprite: /Textures/Interface/Alerts/bleed.rsi
-    state: bleed10
+  sprite: Alerts/bleed.rsi
+  states:
+  - bleed0
+  - bleed1
+  - bleed2
+  - bleed3
+  - bleed4
+  - bleed5
+  - bleed6
+  - bleed7
+  - bleed8
+  - bleed9
+  - bleed10
   name: alerts-bleed-name
   description: alerts-bleed-desc
   minSeverity: 0
@@ -696,9 +654,9 @@
 
 - type: alert
   id: Pacified
-  icons:
-  - sprite: /Textures/Interface/Alerts/pacified.rsi
-    state: icon
+  sprite: Alerts/pacified.rsi
+  states:
+  - icon
   name: alerts-pacified-name
   description: alerts-pacified-desc
 
@@ -706,11 +664,10 @@
   id: Walking
   category: NAWalking
   onClick: !type:ToggleSprintingAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/walking.rsi
-    state: walking0
-  - sprite: /Textures/Interface/Alerts/walking.rsi
-    state: walking1
+  sprite: Alerts/walking.rsi
+  states:
+  - walking0
+  - walking1
   name: alerts-walking-name
   description: alerts-walking-desc
   minSeverity: 0
@@ -723,11 +680,10 @@
   id: CombatMode
   category: NACombatMode
   onClick: !type:ToggleCombatModeAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/combat_mode.rsi
-    state: harm0
-  - sprite: /Textures/Interface/Alerts/combat_mode.rsi
-    state: harm1
+  sprite: Alerts/combat_mode.rsi
+  states:
+  - harm0
+  - harm1
   name: alerts-combatmode-name
   description: alerts-combatmode-desc
   minSeverity: 0
@@ -740,11 +696,10 @@
   id: Laying
   category: NALaying
   onClick: !type:ToggleLayingModeAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/laying.rsi
-    state: laying0
-  - sprite: /Textures/Interface/Alerts/laying.rsi
-    state: laying1
+  sprite: Alerts/laying.rsi
+  states:
+  - laying0
+  - laying1
   name: alerts-laying-name
   description: alerts-laying-desc
   minSeverity: 0
@@ -757,11 +712,10 @@
   id: Drop
   category: NADrop
   onClick: !type:TryDropAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/drop.rsi
-    state: drop0
-  - sprite: /Textures/Interface/Alerts/drop.rsi
-    state: drop1
+  sprite: Alerts/drop.rsi
+  states:
+  - drop0
+  - drop1
   name: alerts-drop-name
   description: alerts-drop-desc
   minSeverity: 0
@@ -774,11 +728,10 @@
   id: Throw
   category: NAThrow
   onClick: !type:ToggleThrowMode { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/throw.rsi
-    state: throw0
-  - sprite: /Textures/Interface/Alerts/throw.rsi
-    state: throw1
+  sprite: Alerts/throw.rsi
+  states:
+  - throw0
+  - throw1
   name: alerts-throw-name
   description: alerts-throw-desc
   minSeverity: 0
@@ -791,11 +744,10 @@
   id: IntentHelp
   category: IntentHelp
   onClick: !type:ToggleIntentHelpAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/Intents/intent_help.rsi
-    state: intent0
-  - sprite: /Textures/Interface/Alerts/Intents/intent_help.rsi
-    state: intent1
+  sprite: Alerts/Intents/intent_help.rsi
+  states:
+  - intent0
+  - intent1
   name: alerts-intent-help-name
   description: alerts-intent-help-desc
   minSeverity: 0
@@ -808,11 +760,10 @@
   id: IntentDisarm
   category: IntentDisarm
   onClick: !type:ToggleIntentDisarmAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/Intents/intent_disarm.rsi
-    state: intent0
-  - sprite: /Textures/Interface/Alerts/Intents/intent_disarm.rsi
-    state: intent1
+  sprite: Alerts/Intents/intent_disarm.rsi
+  states:
+  - intent0
+  - intent1
   name: alerts-intent-disarm-name
   description: alerts-intent-disarm-desc
   minSeverity: 0
@@ -825,11 +776,10 @@
   id: IntentGrab
   category: IntentGrab
   onClick: !type:ToggleIntentGrabAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/Intents/intent_grab.rsi
-    state: intent0
-  - sprite: /Textures/Interface/Alerts/Intents/intent_grab.rsi
-    state: intent1
+  sprite: Alerts/Intents/intent_grab.rsi
+  states:
+  - intent0
+  - intent1
   name: alerts-intent-grab-name
   description: alerts-intent-grab-desc
   minSeverity: 0
@@ -842,11 +792,10 @@
   id: IntentHarm
   category: IntentHarm
   onClick: !type:ToggleIntentHarmAlert { }
-  icons:
-  - sprite: /Textures/Interface/Alerts/Intents/intent_harm.rsi
-    state: intent0
-  - sprite: /Textures/Interface/Alerts/Intents/intent_harm.rsi
-    state: intent1
+  sprite: Alerts/Intents/intent_harm.rsi
+  states:
+  - intent0
+  - intent1
   name: alerts-intent-harm-name
   description: alerts-intent-harm-desc
   minSeverity: 0
@@ -855,62 +804,14 @@
   hudPositionY: 464
   isGeneric: false
 
-- type: alert
-  id: Debug1
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health0
-  name: Debug1
-  description: Debug
-
-- type: alert
-  id: Debug2
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health1
-  name: Debug2
-  description: Debug
-
-- type: alert
-  id: Debug3
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health2
-  name: Debug3
-  description: Debug
-
-- type: alert
-  id: Debug4
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health3
-  name: Debug4
-  description: Debug
-
-- type: alert
-  id: Debug5
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_alive.rsi
-    state: health4
-  name: Debug5
-  description: Debug
-
-- type: alert
-  id: Debug6
-  icons:
-  - sprite: /Textures/Interface/Alerts/human_critical.rsi
-    state: critical
-  name: Debug6
-  description: Debug
-
 # Moods
 - type: alert
   id: Insane
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood_insane
+  sprite: Alerts/mood.rsi
+  states:
+  - mood_insane
   name: alerts-mood-insane-name
   description: alerts-mood-insane-desc
   hudPositionX: 0
@@ -921,9 +822,9 @@
   id: Horrible
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood1
+  sprite: Alerts/mood.rsi
+  states:
+  - mood1
   name: alerts-mood-horrible-name
   description: alerts-mood-horrible-desc
   hudPositionX: 0
@@ -934,9 +835,9 @@
   id: Terrible
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood2
+  sprite: Alerts/mood.rsi
+  states:
+  - mood2
   name: alerts-mood-terrible-name
   description: alerts-mood-terrible-desc
   hudPositionX: 0
@@ -947,9 +848,9 @@
   id: Bad
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood3
+  sprite: Alerts/mood.rsi
+  states:
+  - mood3
   name: alerts-mood-bad-name
   description: alerts-mood-bad-desc
   hudPositionX: 0
@@ -960,9 +861,9 @@
   id: Meh
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood4
+  sprite: Alerts/mood.rsi
+  states:
+  - mood4
   name: alerts-mood-meh-name
   description: alerts-mood-meh-desc
   hudPositionX: 0
@@ -973,9 +874,9 @@
   id: Neutral
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood5
+  sprite: Alerts/mood.rsi
+  states:
+  - mood5
   name: alerts-mood-neutral-name
   description: alerts-mood-neutral-desc
   hudPositionX: 0
@@ -986,9 +887,9 @@
   id: Good
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood6
+  sprite: Alerts/mood.rsi
+  states:
+  - mood6
   name: alerts-mood-good-name
   description: alerts-mood-good-desc
   hudPositionX: 0
@@ -999,9 +900,9 @@
   id: Great
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood7
+  sprite: Alerts/mood.rsi
+  states:
+  - mood7
   name: alerts-mood-great-name
   description: alerts-mood-great-desc
   hudPositionX: 0
@@ -1012,9 +913,9 @@
   id: Exceptional
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood8
+  sprite: Alerts/mood.rsi
+  states:
+  - mood8
   name: alerts-mood-exceptional-name
   description: alerts-mood-exceptional-desc
   hudPositionX: 0
@@ -1025,9 +926,9 @@
   id: Perfect
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood9
+  sprite: Alerts/mood.rsi
+  states:
+  - mood9
   name: alerts-mood-perfect-name
   description: alerts-mood-perfect-desc
   hudPositionX: 0
@@ -1038,9 +939,9 @@
   id: MoodDead
   category: Mood
   onClick: !type:ShowMoodEffects { }
-  icons:
-    - sprite: /Textures/Interface/Alerts/mood.rsi
-      state: mood_happiness_bad
+  sprite: Alerts/mood.rsi
+  states:
+  - mood_happiness_bad
   name: alerts-mood-dead-name
   description: alerts-mood-dead-desc
   hudPositionX: 0
@@ -1049,8 +950,8 @@
 
 - type: alert
   id: Deflecting
-  icons:
-  - sprite: /Textures/Interface/Alerts/deflecting.rsi
-    state: deflecting0
+  sprite: Alerts/deflecting.rsi
+  states:
+  - deflecting0
   name: alerts-deflecting-name
   description: alerts-deflecting-desc

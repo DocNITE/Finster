@@ -5,9 +5,14 @@ using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Friction;
 using Content.Shared.Gravity;
+using Content.Shared.Interaction;
 using Content.Shared.Projectiles;
+using Content.Shared.Weapons.Melee;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
@@ -35,6 +40,7 @@ public sealed class ThrowingSystem : EntitySystem
 
     private float _frictionModifier;
 
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
@@ -43,6 +49,11 @@ public sealed class ThrowingSystem : EntitySystem
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
+    [Dependency] private readonly RotateToFaceSystem _rotateToFace = default!; // FINSTER EDIT
+    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!; // FINSTER EDIT
+    [Dependency] private readonly SharedAudioSystem _audio = default!; // FINSTER EDIT
+
+    private readonly SoundSpecifier _throwSound = new SoundCollectionSpecifier("Throwing");
 
     public override void Initialize()
     {
@@ -93,7 +104,8 @@ public sealed class ThrowingSystem : EntitySystem
         bool recoil = true,
         bool animated = true,
         bool playSound = true,
-        bool doSpin = true)
+        bool doSpin = true,
+        bool rotate = true)
     {
         var physicsQuery = GetEntityQuery<PhysicsComponent>();
         if (!physicsQuery.TryGetComponent(uid, out var physics))
@@ -110,7 +122,7 @@ public sealed class ThrowingSystem : EntitySystem
             baseThrowSpeed,
             user,
             pushbackRatio,
-            friction, compensateFriction: compensateFriction, recoil: recoil, animated: animated, playSound: playSound, doSpin: doSpin);
+            friction, compensateFriction: compensateFriction, recoil: recoil, animated: animated, playSound: playSound, doSpin: doSpin, rotate: rotate);
     }
 
     /// <summary>
@@ -136,7 +148,8 @@ public sealed class ThrowingSystem : EntitySystem
         bool recoil = true,
         bool animated = true,
         bool playSound = true,
-        bool doSpin = true)
+        bool doSpin = true,
+        bool rotate = true)
     {
         if (baseThrowSpeed <= 0 || direction == Vector2Helpers.Infinity || direction == Vector2Helpers.NaN || direction == Vector2.Zero || friction < 0)
             return;
@@ -220,8 +233,25 @@ public sealed class ThrowingSystem : EntitySystem
         if (user == null)
             return;
 
+        // EE's recoil animation
+        //if (recoil)
+        //    _recoil.KickCamera(user.Value, -direction * 0.04f);
         if (recoil)
-            _recoil.KickCamera(user.Value, -direction * 0.04f);
+        {
+            // _recoil.KickCamera(user.Value, -direction * 0.04f);
+            var localPos = Vector2.Transform(transform.LocalPosition + direction, _transform.GetInvWorldMatrix(transform));
+
+            if (rotate)
+            {
+                _rotateToFace.TryFaceCoordinates(user.Value, _transform.ToMapCoordinates(transform.Coordinates.Offset(direction)).Position);
+
+                if (_net.IsServer)
+                    _audio.PlayPvs(_throwSound, user.Value);
+            }
+
+            localPos = transform.LocalRotation.RotateVec(localPos);
+            _melee.DoLunge(user.Value, user.Value, Angle.Zero, localPos, null, predicted: false);
+        }
 
         // Give thrower an impulse in the other direction
         if (pushbackRatio != 0.0f &&

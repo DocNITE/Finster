@@ -135,6 +135,7 @@ public sealed class HandsComponentState : ComponentState
     public readonly List<Hand> Hands;
     public readonly List<string> HandNames;
     public readonly string? ActiveHand;
+    public readonly bool InThrowMode;
 
     public HandsComponentState(HandsComponent handComp)
     {
@@ -142,6 +143,7 @@ public sealed class HandsComponentState : ComponentState
         Hands = new(handComp.Hands.Values);
         HandNames = new(handComp.SortedHands);
         ActiveHand = handComp.ActiveHand?.Name;
+        InThrowMode = handComp.InThrowMode; // FINSTER EDIT
     }
 }
 

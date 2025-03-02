@@ -211,7 +211,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
             return false;
 
         _pulling.TryStartPull(user, target);
-        _pulling.TryGrab(target, user);
+        _pulling.TryGrab(target, user, isServerOnlySoundEffect: true);
 
         return true;
     }

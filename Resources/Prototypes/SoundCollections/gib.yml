@@ -1,12 +1,18 @@
 - type: soundCollection
   id: gib
   files:
-  - /Audio/Effects/gib1.ogg
-  - /Audio/Effects/gib2.ogg
-  - /Audio/Effects/gib3.ogg
+  - /Audio/_Finster/Effects/Combat/gib1.ogg
+  - /Audio/_Finster/Effects/Combat/gib2.ogg
+  - /Audio/_Finster/Effects/Combat/gib3.ogg
+  - /Audio/_Finster/Effects/Combat/gib4.ogg
+  - /Audio/_Finster/Effects/Combat/gib5.ogg
+
 
 - type: soundCollection
   id: blood
   files:
-  - /Audio/Effects/Fluids/blood1.ogg
-  - /Audio/Effects/Fluids/blood2.ogg
+  - /Audio/_Finster/Effects/Combat/blood1.ogg
+  - /Audio/_Finster/Effects/Combat/blood2.ogg
+  - /Audio/_Finster/Effects/Combat/blood3.ogg
+  - /Audio/_Finster/Effects/Combat/blood4.ogg
+  - /Audio/_Finster/Effects/Combat/blood5.ogg

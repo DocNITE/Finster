@@ -4,6 +4,7 @@ using Content.Client._White.Intent;
 using Content.Client.ContextMenu.UI;
 using Content.Client.Gameplay;
 using Content.Client.Mapping;
+using Content.Shared._White.Intent;
 using Content.Shared.Input;
 using Content.Shared.Verbs;
 using Robust.Client.Player;
@@ -96,13 +97,13 @@ namespace Content.Client.Verbs.UI
         /// <param name="popup">
         ///     If this is not null, verbs will be placed into the given popup instead.
         /// </param>
-        public void OpenVerbMenu(NetEntity target, bool force = false, ContextMenuPopup? popup=null)
+        public void OpenVerbMenu(NetEntity target, bool force = false, ContextMenuPopup? popup = null)
         {
             DebugTools.Assert(target.IsValid());
             if (_playerManager.LocalEntity is not {Valid: true} user)
                 return;
 
-            if (!force && _intent.CanAttack(user)) // WD EDIT
+            if (!force && _intent.GetIntent() == Intent.Harm) // WD EDIT
                 return;
 
             Close();

@@ -377,6 +377,11 @@ namespace Content.Shared.Interaction
             bool checkAccess = true,
             bool checkCanUse = true)
         {
+            // FINSTER EDIT - Don't interact with the world in ThrowMode
+            if (_handsQuery.TryComp(user, out var handComp) && handComp.InThrowMode)
+                return;
+            // FINSTER EDIT END
+
             if (_relayQuery.TryComp(user, out var relay) && relay.RelayEntity is not null)
             {
                 // TODO this needs to be handled better. This probably bypasses many complex can-interact checks in weird roundabout ways.
@@ -396,14 +401,20 @@ namespace Content.Shared.Interaction
             if (target != null && Deleted(target.Value))
                 return;
 
+            if (!ValidateInteractAndFace(user, coordinates))
+                return;
+
+            // Because we should do HARM every click in harm mode.
+            // Use another intents instead
+            if (!altInteract && _intent.GetIntent(user) == Intent.Harm)
+                return;
+            /*
             if (!altInteract && _intent.GetIntent(user) == Intent.Harm) // WD EDIT
             {
                 if (!CombatModeCanHandInteract(user, target))
                     return;
             }
-
-            if (!ValidateInteractAndFace(user, coordinates))
-                return;
+            */
 
             if (altInteract && target != null)
             {
@@ -1167,7 +1178,7 @@ namespace Content.Shared.Interaction
                 return false;
 
             // Goobstation [
-            var useAttemptEv = new UseInHandAttemptEvent(user); 
+            var useAttemptEv = new UseInHandAttemptEvent(user);
             RaiseLocalEvent(used, useAttemptEv);
 
             if (useAttemptEv.Cancelled)

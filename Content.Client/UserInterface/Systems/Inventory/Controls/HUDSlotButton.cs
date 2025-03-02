@@ -12,5 +12,6 @@ public sealed class HUDSlotButton : HUDSlotControl
         Blocked = slotData.Blocked;
         Highlight = slotData.Highlighted;
         SlotName = slotData.SlotName;
+        HoverName = HoverNamePrefix + slotData.SlotName;
     }
 }

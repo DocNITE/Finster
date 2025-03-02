@@ -8,12 +8,12 @@ public sealed class LookupSystem : EntitySystem
 
     public override void Initialize()
     {
-        _overlay.AddOverlay(new LookupOverlay());
+        //_overlay.AddOverlay(new LookupOverlay());
     }
 
     public override void Shutdown()
     {
         base.Shutdown();
-        _overlay.RemoveOverlay<LookupOverlay>();
+        //_overlay.RemoveOverlay<LookupOverlay>();
     }
 }

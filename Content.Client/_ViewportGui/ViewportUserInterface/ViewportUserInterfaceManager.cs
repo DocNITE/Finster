@@ -49,10 +49,20 @@ public interface IViewportUserInterfaceManager
     void Draw(ViewportUIDrawArgs args);
 
     ViewportDrawBounds? GetDrawingBounds();
+    ResPath GetThemeRsiPath(string rsi);
+    SpriteSpecifier GetThemeRsi(string rsi, string icon);
     Texture? GetTexturePath(string path);
     Texture? GetTexturePath(ResPath path);
     bool TryGetControl<T>(string controlName, out T? control) where T : HUDControl;
     bool TryGetControl<T>(out T? control) where T : HUDControl;
+    bool DoControlsBounds(
+        HUDControl uicontrol,
+        ref HUDBoundsCheckArgs boundsArgs,
+        HUDKeyBindInfo? keyBindInfo,
+        Vector2i mousePos,
+        bool canInteract = true);
+    HUDBoundsCheckArgs? TryFindHUDControl(HUDControl? root = null);
+    Vector2i? ConvertGlobalToLocal(ScreenCoordinates mousePos);
 
     /// <summary>
     /// Play UI click sound for buttons, like <seealso cref="IUserInterfaceManager"/>
@@ -75,6 +85,7 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly IAudioManager _audioManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
 
     private List<BoundKeyFunction> _whitelistBoundKeys = new()
     {
@@ -92,6 +103,8 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
 
         // Hands
         ContentKeyFunctions.SwapHands,
+        ContentKeyFunctions.UseItemInHand,
+        ContentKeyFunctions.AltUseItemInHand,
 
         // Debug info
         EngineKeyFunctions.ShowDebugConsole,
@@ -173,6 +186,15 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         var boundsSize = new UIBox2(boundPositionTopLeft, boundPositionBottomRight);
 
         return new ViewportDrawBounds(boundsSize, drawBoxScale);
+    }
+
+    public ResPath GetThemeRsiPath(string rsi) =>
+        new ResPath(_uiManager.CurrentTheme.Path.ToString() + rsi);
+
+    public SpriteSpecifier GetThemeRsi(string rsi, string icon)
+    {
+        SpriteSpecifier sprite = new SpriteSpecifier.Rsi(GetThemeRsiPath(rsi), icon);
+        return sprite;
     }
 
     public Texture? GetTexturePath(string path)
@@ -289,22 +311,44 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
 
     private bool DoInteraction(HUDKeyBindInfo keyBindInfo)
     {
-        if (Root is null)
+        var boundsArgs = TryFindHUDControlInternal(keyBindInfo);
+        if (boundsArgs is null)
             return false;
+
+        return boundsArgs.Value.InBounds;
+    }
+
+    public HUDBoundsCheckArgs? TryFindHUDControl(HUDControl? root = null)
+    {
+        if (root is null)
+            root = Root;
 
         var mouseScreenPos = _inputManager.MouseScreenPosition;
         var localMousePos = ConvertGlobalToLocal(mouseScreenPos);
         if (localMousePos is null)
-            return false;
+            return null;
+
+        var boundsArgs = new HUDBoundsCheckArgs();
+        var result = DoControlsBounds(root, ref boundsArgs, null, (Vector2i) localMousePos, canInteract: false);
+
+        return boundsArgs;
+    }
+
+    // Because need apply some specific logic for only VPGui
+    private HUDBoundsCheckArgs? TryFindHUDControlInternal(HUDKeyBindInfo keyBindInfo)
+    {
+        var mouseScreenPos = _inputManager.MouseScreenPosition;
+        var localMousePos = ConvertGlobalToLocal(mouseScreenPos);
+        if (localMousePos is null)
+            return null;
 
         var boundsArgs = new HUDBoundsCheckArgs();
         var result = DoControlsBounds(Root, ref boundsArgs, keyBindInfo, (Vector2i) localMousePos);
-        CanMouseInteractInWorld = !result;
 
-        return boundsArgs.InBounds;
+        return boundsArgs;
     }
 
-    private Vector2i? ConvertGlobalToLocal(ScreenCoordinates mousePos)
+    public Vector2i? ConvertGlobalToLocal(ScreenCoordinates mousePos)
     {
         var drawBounds = GetDrawingBounds();
         if (drawBounds is null)
@@ -336,30 +380,24 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
     /// <param name="keyBindInfo"></param>
     /// <param name="mousePos"></param>
     /// <returns>Does mouse cursor is focused on control</returns>
-    private bool DoControlsBounds(HUDControl uicontrol, ref HUDBoundsCheckArgs boundsArgs, HUDKeyBindInfo keyBindInfo, Vector2i mousePos)
+    public bool DoControlsBounds(
+        HUDControl uicontrol,
+        ref HUDBoundsCheckArgs boundsArgs,
+        HUDKeyBindInfo? keyBindInfo,
+        Vector2i mousePos,
+        bool canInteract = true)
     {
         // Check if the mouse is within the bounds of the current control
         if (InControlBounds(uicontrol.GlobalPosition, uicontrol.Size, mousePos))
         {
             if (uicontrol.MouseFilter >= HUDMouseFilterMode.Pass && uicontrol.VisibleInTree)
             {
-                // Handle key bind events
-                if (keyBindInfo.KeyBindType == HUDKeyBindType.Down)
-                    uicontrol.KeyBindDown(keyBindInfo.KeyEventArgs);
-                else if (keyBindInfo.KeyBindType == HUDKeyBindType.Up)
-                    uicontrol.KeyBindUp(keyBindInfo.KeyEventArgs);
-
-                // Update bounds arguments
-                if (!uicontrol.IgnoreBounds)
-                    boundsArgs.InBounds = true;
-                boundsArgs.IsFocused = true;
-
-                // If the control stops further interaction, return true
-                if (uicontrol.MouseFilter == HUDMouseFilterMode.Stop)
+                if (TryControlInteraction(uicontrol, ref boundsArgs, keyBindInfo, canInteract))
                     return true;
             }
 
-            if (!uicontrol.IgnoreBounds)
+            // Well... By some reasons we can't interact with panels
+            if (!uicontrol.IgnoreBounds && uicontrol.VisibleInTree)
                 boundsArgs.InBounds = true;
         }
 
@@ -373,6 +411,34 @@ public sealed class ViewportUserInterfaceManager : IViewportUserInterfaceManager
         }
 
         return boundsArgs.IsFocused;
+    }
+
+    private bool TryControlInteraction(
+        HUDControl uicontrol,
+        ref HUDBoundsCheckArgs boundsArgs,
+        HUDKeyBindInfo? keyBindInfo,
+        bool canInteract = true)
+    {
+        // Handle key bind events
+        if (canInteract && keyBindInfo is not null)
+        {
+            if (keyBindInfo.Value.KeyBindType == HUDKeyBindType.Down)
+                uicontrol.KeyBindDown(keyBindInfo.Value.KeyEventArgs);
+            else if (keyBindInfo.Value.KeyBindType == HUDKeyBindType.Up)
+                uicontrol.KeyBindUp(keyBindInfo.Value.KeyEventArgs);
+        }
+
+        // Update bounds arguments
+        if (!uicontrol.IgnoreBounds)
+            boundsArgs.InBounds = true;
+        boundsArgs.FocusedControl = uicontrol;
+        boundsArgs.IsFocused = true;
+
+        // If the control stops further interaction, return true
+        if (uicontrol.MouseFilter == HUDMouseFilterMode.Stop)
+            return true;
+
+        return false;
     }
 
     private bool InControlBounds(Vector2i controlPos, Vector2i controlSize, Vector2i pos)
@@ -395,6 +461,8 @@ public record struct HUDBoundsCheckArgs
     public HUDBoundsCheckArgs()
     {
     }
+
+    public HUDControl? FocusedControl { get; set; }
 
     public bool InBounds { get; set; } = false;
     public bool IsFocused { get; set; } = false;
