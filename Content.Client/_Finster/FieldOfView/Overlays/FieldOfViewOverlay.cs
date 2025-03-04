@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Client.Examine;
 using Content.Client.Gameplay;
+using Content.Client.UserInterface.Systems.DamageOverlays.Overlays;
 using Content.Client.Viewport;
 using Content.KayMisaZlevels.Client;
 using Content.Shared._Finster.FieldOfView;
@@ -31,6 +32,8 @@ public sealed class FieldOfViewOverlay : Overlay
     public FieldOfViewOverlay()
     {
         IoCManager.InjectDependencies(this);
+
+        ZIndex = DamageOverlay.DrawingDepth - 1;
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

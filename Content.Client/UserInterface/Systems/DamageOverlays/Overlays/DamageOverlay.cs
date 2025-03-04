@@ -48,6 +48,8 @@ public sealed class DamageOverlay : Overlay
 
     public float DeadLevel = 1f;
 
+    public const int DrawingDepth = 10;
+
     public DamageOverlay()
     {
         // TODO: Replace
@@ -56,6 +58,8 @@ public sealed class DamageOverlay : Overlay
         _critShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _bruteShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _greyscaleShader = _prototypeManager.Index<ShaderPrototype>("GreyscaleFullscreen").InstanceUnique();
+
+        ZIndex = DrawingDepth;
     }
 
     protected override void Draw(in OverlayDrawArgs args)

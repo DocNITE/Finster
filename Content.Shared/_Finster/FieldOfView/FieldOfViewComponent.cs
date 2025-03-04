@@ -12,7 +12,7 @@ public sealed partial class FieldOfViewComponent : Component
     public float Angle { get; set; } = 270.0f;
 
     [DataField, AutoNetworkedField]
-    public float MinDistance { get; set; } = 1.0f;
+    public float MinDistance { get; set; } = 0.65f;
 
     [DataField, AutoNetworkedField]
     public float MaxDistance { get; set; } = 128.0f;
