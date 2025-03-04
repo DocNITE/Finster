@@ -84,6 +84,7 @@
   - type: Telescope
     divisor: 0.3
   - type: Surrender
+  - type: FieldOfView
   - type: FixedEye
   - type: RotationVisuals
     defaultRotation: 90

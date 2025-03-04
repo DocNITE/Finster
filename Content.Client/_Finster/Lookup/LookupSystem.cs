@@ -2,6 +2,7 @@
 using Robust.Client.Graphics;
 
 namespace Content.Client._Finster.Lookup;
+
 public sealed class LookupSystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlay = default!;
