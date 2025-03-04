@@ -5,15 +5,37 @@ namespace Content.Shared._Finster.FieldOfView;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class FieldOfViewComponent : Component
 {
-    [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite), DataField]
+    [DataField, AutoNetworkedField]
     public bool Enabled { get; set; } = true;
 
-    [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite), DataField]
+    [DataField, AutoNetworkedField]
     public float Angle { get; set; } = 270.0f;
 
-    [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public float Distance { get; set; } = 128.0f;
+    [DataField, AutoNetworkedField]
+    public float MinDistance { get; set; } = 1.0f;
+
+    [DataField, AutoNetworkedField]
+    public float MaxDistance { get; set; } = 128.0f;
+
+    [DataField, AutoNetworkedField]
+    public BlockedVisionDirection Direction = BlockedVisionDirection.Backward;
+
+    public float GetRotation(BlockedVisionDirection dir)
+    {
+        switch (dir)
+        {
+            case BlockedVisionDirection.Backward:
+                return -90.0f;
+            case BlockedVisionDirection.Toward:
+                return 90.0f;
+        }
+
+        return 0.0f;
+    }
+}
+
+public enum BlockedVisionDirection : ushort
+{
+    Backward,
+    Toward
 }
